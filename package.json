@@ -1,5 +1,5 @@
 {
-  "name": "jsondb",
+  "name": "json.db",
   "version": "1.0.0",
   "description": "NoSQL database in json files",
   "repository": {
@@ -11,14 +11,24 @@
     "npm": "~1.2.14"
   },
   "devDependencies": {
-	"fs": "*",
-	"crypto": "*",
-	"mocha": "*",
-	"should" : "*"
+    "fs": "*",
+    "crypto": "*",
+    "mocha": "*",
+    "should": "*"
   },
   "scripts": {
     "test": "mocha test/*.js"
   },
-  "author": "Gregory Tardivel <gregory.tardivel@gmail.com> (https://gr3g-blog.herokuapp.com)",
-  "license": "GNU GPL v3.0"
+  "author": "gregory.tardivel <gregory.tardivel@gmail.com> (https://gr3g-blog.herokuapp.com)",
+  "license": "GPL",
+  "readmeFilename": "README.md",
+  "gitHead": "d52e05b5ec0fba997efb663d28d83ba4fd87f4e2",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "database",
+    "json",
+    "nosql"
+  ]
 }
