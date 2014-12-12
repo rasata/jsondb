@@ -272,8 +272,18 @@ describe('database - table', function() {
 		var db = new jsondb.Database();
 		var t1 = db.get('Table');
 		t1.lines.length.should.eql(2);		
-		t1.deleteID(1);
+		t1.deleteID(1, true);
 		t1.lines.length.should.eql(1);
+	});
+});
+
+describe('database - table', function() {
+	it('delete line cascade', function() {
+		var db = new jsondb.Database();
+		var t1 = db.get('Table');
+		t1.lines.length.should.eql(1);
+		t1.deleteID('Nom', 'Martin', true);
+		t1.lines.length.should.eql(0);
 	});
 });
 

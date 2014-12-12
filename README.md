@@ -108,12 +108,14 @@ ce fichier définit les élements suivants :
 	
 	/** Supprimer des lignes.
 	 * @param key Nom de la colonne
-	 * @param value Valeur */
-	delete(key, value)
+	 * @param value Valeur
+	 * @param cascade Suppression en cascade (facultatif) */
+	delete(key, value, cascade)
 	
 	/** Supprimer une ligne par index (= numéro de ligne).
-	 * @param idx Numéro de la ligne */
-	deleteID(idx)
+	 * @param idx Numéro de la ligne
+	 * @param cascade Suppression en cascade (facultatif) */
+	deleteID(idx, cascade)
 	
 	/** Modifier une table.
 	 * @param newColumns Array avec les noms des colonnes */
