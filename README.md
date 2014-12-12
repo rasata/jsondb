@@ -74,6 +74,11 @@ ce fichier définit les élements suivants :
 	 * @param condition Condition des lignes à mettre à jour au format JSON {key: value} */
 	update(value, condition)
 	
+	/** Mettre à jour la table par index.
+	 * @param value Nouvelle valeur au format JSON {key: value}
+	 * @param idx Numéro de la ligne */
+	updateID(value, idx)
+ 
 	/** Filtrer une colonne de la table.
 	 * @param column Nom de la colonne à filter
 	 * @return Array */
@@ -84,6 +89,11 @@ ce fichier définit les élements suivants :
 	 * @param value Valeur
 	 * @return Un objet Table (temporaire - sans fichier) */
 	find(key, value)
+	
+	/** Rechercher une ligne par index (= numéro de ligne).
+	 * @param idx Numéro de la ligne
+	 * @return Un objet Table (temporaire - sans fichier) */
+	findID(idx)
 	
 	/** Rechercher les lignes par valeur.
 	 * @param key Colonne
@@ -100,6 +110,10 @@ ce fichier définit les élements suivants :
 	 * @param key Nom de la colonne
 	 * @param value Valeur */
 	delete(key, value)
+	
+	/** Supprimer une ligne par index (= numéro de ligne).
+	 * @param idx Numéro de la ligne */
+	deleteID(idx)
 	
 	/** Modifier une table.
 	 * @param newColumns Array avec les noms des colonnes */
