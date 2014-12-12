@@ -1,0 +1,24 @@
+{
+  "name": "jsondb",
+  "version": "0.1.0",
+  "description": "NoSQL database in json files",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gr3gdev/jsondb.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "npm": "~1.2.14"
+  },
+  "devDependencies": {
+	"fs": "*",
+	"crypto": "*",
+	"mocha": "*",
+	"should" : "*"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "author": "Gregory Tardivel <gregory.tardivel@gmail.com> (https://gr3g-blog.herokuapp.com)",
+  "license": "GNU GPL v3.0"
+}
