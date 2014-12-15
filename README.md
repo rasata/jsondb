@@ -1,5 +1,5 @@
-jsondb
-======
+json.db (V 1.0.2)
+=================
 
 'json.db' est une base de données NoSQL gérer par un système de fichiers au format JSON.
 
@@ -121,3 +121,7 @@ ce fichier définit les élements suivants :
 	 * @param newColumns Array avec les noms des colonnes */
 	modify(newColumns)
 	
+# Commandes
+
+	* database ?
+	* table ?
