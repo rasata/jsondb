@@ -3,6 +3,10 @@ json.db (V 1.0.2)
 
 'json.db' est une base de données NoSQL gérer par un système de fichiers au format JSON.
 
+# Installation
+
+	npm install json.db
+
 # Configuration
 
 La base de données doit être définie dans un fichier de configuration à la racine du projet dans "conf/param-db.js",
