@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+// bin/table
+var jsondb = require('../index');
+
+var args = process.argv.slice(2);
+
+var db = new jsondb.Database();
+
+if (args.length == 1) {
+	if (args[0] == '?') {
+		console.log('[T] : lister les lignes de la table [T]');
+		console.log('[T] add [K1] [V1] [K2] [V2] ... : ajouter une ligne dans la table [T], [K1] : colonne 1 et [V1] la valeur ...');
+		console.log('[T] update [K1] [V1] [K2] [V2] : mettre à jour la table [T], [K1] colonne à mettre à jour, [V1] nouvelle valeur. [K2] colonne de la condition, [V2] valeur de la condition');
+		console.log('[T] modify [C1] [C2] ... : mettre à jour la structure de la table [T], [C1] nouvelle colonne 1, [C2] nouvelle colonne 2, ...');
+		console.log('[T] find [K1] [V1] : rechercher des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
+		console.log('[T] delete [K1] [V1] : supprimer des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
+	} else {
+		console.log(db.get(args[0]).columns);
+		console.log(db.get(args[0]).lines);
+	}
+} else {
+	if (args[1] == 'add') {
+		var datas = {};
+		for (var i = 2; i < args.length; i+=2) {
+			datas[args[i]] = args[i + 1];
+		}
+		var table = db.get(args[0]);
+		table.add(datas);
+	} else if (args[1] == 'update') {
+		var value = {};
+		value[args[2]] = args[3];
+		var condition = {};
+		condition[args[4]] = args[5];
+		var table = db.get(args[0]);
+		table.update(value, condition);
+	} else if (args[1] == 'modify') {
+		var columns = [];
+		for (var i = 2; i < args.length; i++) {
+			columns.push(args[i]);
+		}
+		var table = db.get(args[0]);
+		table.modify(columns);
+	} else if (args[1] == 'find') {
+		var table = db.get(args[0]);
+		table.find(args[2], args[3]);
+	} else if (args[1] == 'delete') {
+		var table = db.get(args[0]);
+		table.delete(args[2], args[3], args[4]);
+	} 
+}

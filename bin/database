@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+// bin/database
+var jsondb = require('../index');
+
+var args = process.argv.slice(2);
+
+var db = new jsondb.Database();
+
+if (args.length == 1) {
+	var cmd = args[0];
+	if (cmd == 'tables') {
+		console.log(db.tables);
+	} else if (cmd == 'drop') {
+		db.drop();
+	} else if (cmd == '?') {
+		console.log('tables : lister les tables');
+		console.log('drop : supprimer la base');
+		console.log('get [T] : lire les lignes de la table [T]');
+		console.log('remove [T] : supprimer la table [T]');
+		console.log('add [T] [C1] [C2] ... : ajouter la table [T] avec les colonnes [C1] [C2] ...');
+	}
+} else if (args.length == 2) {
+	if (args[0] == 'get') {
+		var table = db.get(args[1]);
+		console.log(table.lines);
+	} else if (args[0] == 'remove') {
+		var table = db.remove(args[1]);
+	}
+} else {
+	if (args[0] == 'add') {
+		var columns = [];
+		for (var i = 2; i < args.length; i++) {
+			columns.push(args[i]);
+		}
+		var table = db.add(args[1], columns);
+	}
+}

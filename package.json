@@ -7,6 +7,10 @@
     "url": "git://github.com/gr3gdev/jsondb.git"
   },
   "main": "index.js",
+  "bin": {
+    "database": "./bin/database",
+	"table": "./bin/table"
+  },
   "dependencies": {
     "npm": "~1.2.14"
   },
