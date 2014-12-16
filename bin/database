@@ -13,11 +13,11 @@ if (args.length == 1) {
 	} else if (cmd == 'drop') {
 		db.drop();
 	} else if (cmd == '?') {
-		console.log('tables : lister les tables');
-		console.log('drop : supprimer la base');
-		console.log('get [T] : lire les lignes de la table [T]');
-		console.log('remove [T] : supprimer la table [T]');
-		console.log('add [T] [C1] [C2] ... : ajouter la table [T] avec les colonnes [C1] [C2] ...');
+		console.log('  add [T] [C1] [C2] ... :   ajouter la table [T] avec les colonnes [C1] [C2] ...');
+		console.log('  drop :                    supprimer la base');
+		console.log('  get [T] :                 lire les lignes de la table [T]');
+		console.log('  remove [T] :              supprimer la table [T]');
+		console.log('  tables :                  lister les tables');
 	}
 } else if (args.length == 2) {
 	if (args[0] == 'get') {

@@ -8,12 +8,14 @@ var db = new jsondb.Database();
 
 if (args.length == 1) {
 	if (args[0] == '?') {
-		console.log('[T] : lister les lignes de la table [T]');
-		console.log('[T] add [K1] [V1] [K2] [V2] ... : ajouter une ligne dans la table [T], [K1] : colonne 1 et [V1] la valeur ...');
-		console.log('[T] update [K1] [V1] [K2] [V2] : mettre à jour la table [T], [K1] colonne à mettre à jour, [V1] nouvelle valeur. [K2] colonne de la condition, [V2] valeur de la condition');
-		console.log('[T] modify [C1] [C2] ... : mettre à jour la structure de la table [T], [C1] nouvelle colonne 1, [C2] nouvelle colonne 2, ...');
-		console.log('[T] find [K1] [V1] : rechercher des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
-		console.log('[T] delete [K1] [V1] : supprimer des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
+		console.log('  [T] :                              lister les lignes de la table [T]');
+		console.log('  [T] add [K1] [V1] [K2] [V2] ... :  ajouter une ligne dans la table [T], [K1] : colonne 1 et [V1] la valeur ...');
+		console.log('  [T] delete [K1] [V1] :             supprimer des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
+		console.log('  [T] find [K1] [V1] :               rechercher des lignes dans la table [T] si [K1] colonne vaut [V1] valeur');
+		console.log('  [T] join [Tb] [F] :                joindre les tables [T] et [Tb] où la colonne [F] est commune');
+		console.log('  [T] like [K1] [V1] :               rechercher des lignes dans la table [T] si [K1] colonne contient [V1] valeur');
+		console.log('  [T] modify [C1] [C2] ... :         mettre à jour la structure de la table [T], [C1] nouvelle colonne 1, [C2] nouvelle colonne 2, ...');
+		console.log('  [T] update [K1] [V1] [K2] [V2] :   mettre à jour la table [T], [K1] colonne à mettre à jour, [V1] nouvelle valeur. [K2] colonne de la condition, [V2] valeur de la condition');
 	} else {
 		console.log(db.get(args[0]).columns);
 		console.log(db.get(args[0]).lines);
@@ -42,9 +44,21 @@ if (args.length == 1) {
 		table.modify(columns);
 	} else if (args[1] == 'find') {
 		var table = db.get(args[0]);
-		table.find(args[2], args[3]);
+		var res = table.find(args[2], args[3]);
+		console.log(res.columns);
+		console.log(res.lines);
+	}  else if (args[1] == 'like') {
+		var table = db.get(args[0]);
+		var res = table.like(args[2], args[3]);
+		console.log(res.columns);
+		console.log(res.lines);
 	} else if (args[1] == 'delete') {
 		var table = db.get(args[0]);
 		table.delete(args[2], args[3], args[4]);
+	} else if (args[1] == 'join') {
+		var table = db.get(args[0]);
+		var res = table.join(args[2], args[3]);
+		console.log(res.columns);
+		console.log(res.lines);
 	} 
 }
